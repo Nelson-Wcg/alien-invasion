@@ -1,6 +1,7 @@
 import sys;
 import pygame;
 from bullet import Bullet;
+from enemy import Enemy;
 
 
 def check_events(ship, ai_settings, screen, bullets):
@@ -21,7 +22,7 @@ def check_keydown_events(ship, event, ai_settings, screen, bullets):
     elif event.key == pygame.K_LEFT:
         ship.move_left = True
     elif event.key == pygame.K_SPACE:
-        fire_bullet(ship, event, ai_settings, screen, bullets)
+        fire_bullet(ship, ai_settings, screen, bullets)
 
 
 def check_keyup_events(ship, event):
@@ -31,21 +32,32 @@ def check_keyup_events(ship, event):
         ship.move_left = False
 
 
-def update_screen(ai_settings, screen, ship, bullets):
+def update_screen(ai_settings, screen, ship, bullets, enemies):
     """更新屏幕上的图像，并切换到新屏幕"""
     # 每次循环都重绘屏幕
     screen.fill(ai_settings.bg_color)
     ship.blitme()
+    for enemy in enemies.sprites():
+        enemy.draw_enemy()
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     # 让最近绘制的屏幕可见
     pygame.display.flip()
 
 
-def fire_bullet(ship, event, ai_settings, screen, bullets):
+def fire_bullet(ship, ai_settings, screen, bullets):
     bullet = Bullet(ai_settings, screen, ship)
     bullets.add(bullet)
 
 
 def update_bullets(bullets):
     bullets.update()
+
+
+def update_enemies(ai_settings, enemies, flag, screen):
+    print("enemy_size" + str(flag))
+    if flag:
+        enemy = Enemy(ai_settings, screen)
+        enemies.add(enemy)
+        enemy_size = 0
+    enemies.update()
