@@ -20,8 +20,8 @@ def run_game():
     enemies = Group()
     # 开始游戏主循环
     while True:
-        enemy_size += 1
-        flag = enemy_size >= 50
+        enemy_size += ai_settings.enemy_speed_factor
+        flag = enemy_size >= 100
         if flag:
             enemy_size = 0
         gf.check_events(ship, ai_settings, screen, bullets)
