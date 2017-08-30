@@ -8,6 +8,10 @@ class Settings():
         self.bullet_width = 2
         self.bullet_height = 5
         self.bullet_color = (60, 60, 60)
-        self.bullet_speed_factor = 1
+        self.bullet_speed_factor = 1  # 子弹速度
+        self.bullet_fire_gap = 100  # 子弹间隔
 
-        self.enemy_speed_factor = 0.5
+        self.enemy_speed_factor = 0.5  # 敌机下落速度
+        self.enemy_spacing = 100  # 敌机垂直间距
+
+        self.top_bar = 10

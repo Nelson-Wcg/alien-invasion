@@ -14,13 +14,15 @@ class Enemy(Sprite):
         # self.rect = pygame.Rect(0, 0, ai_settings.bullet_width,
         # ai_settings.bullet_height)
         self.image = pygame.image.load('image/enemy.png')
+
         self.rect = self.image.get_rect()
         self.rect.centerx = random.randint(int(self.rect.width/2), self.screen_rect.width-int(self.rect.width))
-        self.rect.top = self.screen_rect.top
+        self.rect.bottom = 0
         self.speed_factor = float(ai_settings.enemy_speed_factor)
         self.y = float(self.rect.y)
 
     def update(self):
+        print("self.speed_factor"+ str(self.speed_factor))
         self.y += self.speed_factor
         self.rect.y = self.y
 

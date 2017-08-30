@@ -2,7 +2,7 @@ import pygame;
 
 
 class Ship():
-    def __init__(self, screen):
+    def __init__(self, screen, ai_settings):
         """初始化飞船并设置初始位置"""
         self.screen = screen
         # 加载飞船图像病获取七外接矩形
@@ -14,6 +14,9 @@ class Ship():
         self.rect.bottom = self.screen_rect.bottom
         self.move_left = False
         self.move_right = False
+        self.fire = False
+        self.fire_gap = ai_settings.bullet_fire_gap
+        self.fire_ticks = 0
 
     def update(self):
         if self.move_right and self.rect.right < self.screen_rect.right:
