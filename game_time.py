@@ -13,7 +13,8 @@ class GameTime():
         self.ticks = int(time.time())
         self.time_image = None
         self.time_rect = None
-        self.flag=10
+        self.flag = 100  # 加快游戏进程间隔
+
     def prep_time(self, ai_settings):
         """时间格式化"""
         if self.begin_time == 0:
