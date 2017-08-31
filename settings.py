@@ -5,8 +5,8 @@ class Settings():
         self.screen_height = 700
         self.bg_color = (255, 255, 255)
 
-        self.bullet_width = 2
-        self.bullet_height = 5
+        self.bullet_width = 3
+        self.bullet_height = 7
         self.bullet_color = (60, 60, 60)
         self.bullet_speed_factor = 1  # 子弹速度
         self.bullet_fire_gap = 100  # 子弹间隔

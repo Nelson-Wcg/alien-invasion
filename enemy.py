@@ -13,7 +13,8 @@ class Enemy(Sprite):
         self.screen_rect = screen.get_rect()
         # self.rect = pygame.Rect(0, 0, ai_settings.bullet_width,
         # ai_settings.bullet_height)
-        self.image = pygame.image.load('image/enemy.png')
+        self.image = pygame.image.load('image/enemy.png').convert_alpha()
+        self.image = pygame.transform.smoothscale(self.image, (50, 50))  # 缩小图片
 
         self.rect = self.image.get_rect()
         self.rect.centerx = random.randint(int(self.rect.width/2), self.screen_rect.width-int(self.rect.width))
@@ -22,10 +23,10 @@ class Enemy(Sprite):
         self.y = float(self.rect.y)
 
     def update(self):
-        print("self.speed_factor"+ str(self.speed_factor))
+        # print("self.speed_factor"+ str(self.speed_factor))
         self.y += self.speed_factor
         self.rect.y = self.y
 
-    def draw_enemy(self):
+    def blitme(self):
         """Draw the bullet to the screen."""
         self.screen.blit(self.image, self.rect)
