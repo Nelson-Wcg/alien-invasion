@@ -42,9 +42,10 @@ def check_keyup_events(ship, event, state):
         ship.fire = False
 
 
-def update_screen(ai_settings, screen, ship, bullets, enemies, time, center_bar, state):
+def update_screen(back_ground, ai_settings, screen, ship, bullets, enemies, time, center_bar, state):
     """更新屏幕上的图像，并切换到新屏幕"""
-    screen.fill(ai_settings.bg_color)
+    # screen.fill(ai_settings.bg_color)
+    screen.blit(back_ground, (0, 0))
 
     if not state.game_active:
         center_bar.blitme()
@@ -53,20 +54,20 @@ def update_screen(ai_settings, screen, ship, bullets, enemies, time, center_bar,
     for enemy in enemies.sprites():  # 绘制敌机
         enemy.blitme()
     for bullet in bullets.sprites():  # 绘制子弹
-        bullet.draw_bullet()
+        bullet.draw_bullet(screen)
     time.draw(screen)  # 绘制时间
     # 让最近绘制的屏幕可见
     pygame.display.flip()
 
 
-def fire_bullet(ship, ai_settings, screen, bullets):
-    bullet = Bullet(ai_settings, screen, ship)
+def fire_bullet(ship, ai_settings, screen, bullets, bullet_type):
+    bullet = Bullet(ai_settings, screen, ship, "ship")
     bullets.add(bullet)
 
 
 def update_bullets(ship, ai_settings, screen, bullets):
     if ship.fire and ship.fire_ticks % ship.fire_gap == 0:
-        fire_bullet(ship, ai_settings, screen, bullets)
+        fire_bullet(ship, ai_settings, screen, bullets, "ship")
     ship.fire_ticks += ai_settings.bullet_speed_factor
 
     bullets.update()

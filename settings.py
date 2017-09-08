@@ -1,8 +1,8 @@
 class Settings():
     def __init__(self):
         """初始化游戏设置"""
-        self.screen_width = 500
-        self.screen_height = 700
+        self.screen_width = 720
+        self.screen_height = 960
         self.bg_color = (255, 255, 255)
 
         self.bullet_width = 3

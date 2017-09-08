@@ -14,13 +14,16 @@ def run_game():
     pygame.init()
     ai_settings = Settings()
     # 创建一个游戏界面
-    screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
-    pygame.display.set_caption("Alien Invasion")
+    screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))  # 窗口大小
+    pygame.display.set_caption("Alien Invasion")  # 窗口描述
+
+    back_ground = pygame.image.load("image/bg3.png").convert_alpha()  # 背景
+    back_ground = pygame.transform.smoothscale(back_ground, (ai_settings.screen_width, ai_settings.screen_height))
 
     ship = Ship(screen, ai_settings)
     bullets = Group()
     enemies = Group()
-    print("enemiesc"+str(enemies))
+    print("enemiesc" + str(enemies))
     center_bar = CenterBar(screen)
     # 游戏开始
     time = GameTime(screen)
@@ -41,7 +44,8 @@ def run_game():
             gf.update_enemies(ai_settings, screen, enemies, ship, enemy_flag, state)  # 更新敌机位置
             gf.update_collisions(bullets, enemies)  # 子弹打中敌机
 
-        gf.update_screen(ai_settings, screen, ship, bullets, enemies, time, center_bar, state)  # 将所有元素绘制到画面上
+        gf.update_screen(back_ground, ai_settings, screen, ship, bullets, enemies, time, center_bar,
+                         state)  # 将所有元素绘制到画面上
 
 
 run_game()
