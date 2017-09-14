@@ -6,7 +6,7 @@ class Ship():
         """初始化飞船并设置初始位置"""
         self.screen = screen
         # 加载飞船图像病获取七外接矩形
-        self.image = pygame.image.load('image/my_ship.png').convert_alpha()
+        self.image = pygame.image.load('image/my.png').convert_alpha()
         # self.image = pygame.transform.smoothscale(self.image, (50, 50))  # 缩小图片
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()

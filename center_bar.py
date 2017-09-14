@@ -12,7 +12,7 @@ class CenterBar():
         self.play_image = myfont.render("play", True, self.blue)
         self.rect = self.play_image.get_rect()
         self.rect.center = self.screen.get_rect().center
-        self.show = False
+        self.show = True
 
     def blitme(self):
         self.screen.blit(self.play_image, self.rect)

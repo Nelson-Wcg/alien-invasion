@@ -5,9 +5,9 @@ from pygame.sprite import Sprite
 class Bullet(Sprite):
     """子弹"""
 
-    def __init__(self, ai_settings, screen, ship, type):
+    def __init__(self, ai_settings, screen, ship, shooter):
         super().__init__()
-        if type == "ship":
+        if shooter == "ship":
             self.image = pygame.image.load('image/my_bollet.png').convert_alpha()
             self.type = "my_bullet"
         else:
@@ -22,12 +22,16 @@ class Bullet(Sprite):
         self.rect.top = ship.rect.top
         self.rect.y = ship.rect.y
         self.y = float(self.rect.y)
-        self.color = ai_settings.bullet_color
+        # self.color = ai_settings.bullet_color
         self.speed_factor = ai_settings.bullet_speed_factor
 
     def update(self):
-        self.y -= self.speed_factor
-        self.rect.y = self.y
+        if self.type == "my_bullet":
+            self.y -= self.speed_factor
+            self.rect.y = self.y
+        elif self.type == "enemy_bullet":
+            self.y += self.speed_factor
+            self.rect.y = self.y
 
     def draw_bullet(self, screen):
         """Draw the bullet to the screen."""
