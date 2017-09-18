@@ -6,7 +6,7 @@ class State():
         self.game_active = False
         self.boss_alive = False
         self.game_score = 0  # 得分
-
+        self.enemy_size = 0
         self.ai_settings = ai_settings
         self.screen = screen
         self.screen_rect = screen.get_rect()

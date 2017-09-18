@@ -20,11 +20,11 @@ class Ship():
         self.fire_gap = ai_settings.bullet_fire_gap
         self.fire_ticks = 0
 
-    def update(self):
+    def update(self, time_passed):
         if self.move_right and self.rect.right < self.screen_rect.right:
-            self.rect.centerx += 1
+            self.rect.centerx += time_passed * 1
         elif self.move_left and self.rect.left > 0:
-            self.rect.centerx -= 1
+            self.rect.centerx -= time_passed * 1
 
     def blitme(self):
         """在指定位置绘制飞船"""

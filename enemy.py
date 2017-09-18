@@ -25,6 +25,7 @@ class Enemy(Sprite):
             self.image = pygame.image.load('image/boss.png').convert_alpha()
             self.score = 500
             self.hited = 50
+            self.shotgap = 0
             self.fire = False
         # self.image = pygame.transform.smoothscale(self.image, (50, 50))  # 缩小图片
         self.rect = self.image.get_rect()
